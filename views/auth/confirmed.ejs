@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm</title>
+    <link rel="stylesheet" href="/stylesheets/auth/confirmed.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main id="main">
+        <div class="link-img"><img src="/images/confirmed/link.svg" alt=""></div>
+        <div class="email-img"><img src="/images/confirmed/checkedEmail.svg" alt=""></div>
+        <section class="container">
+            <% if (!confirmError) { %>
+                <div>Электронная почта <span class="u-email"><%= email %></span> успешно подтверждена!</div>
+                <div>Вы можете перейти к обучению на платформе!</div>
+                <a href="/courses" class="courses-link">Перейти к обучению</a>
+            <% } else { %>
+                <div><%= confirmError %></div>
+            <% } %>
+                
+        </section>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

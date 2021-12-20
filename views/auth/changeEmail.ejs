@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm</title>
+    <link rel="stylesheet" href="/stylesheets/auth/changeEmail.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main id="main">
+        <div class="at-symbol-img"><img src="/images/change/at-symbol-change.svg" alt=""></div>
+        <div class="password-img"><img src="/images/change/password.svg" alt=""></div>
+        <section class="change">
+            <div class="change-text">Введите электронную почту и мы отправим на неё инструкцию для сброса пароля</div>
+            <form id="changeform">
+                <input type="email" name="email" id="email" placeholder="Электронная почта" required>
+                <div class="email-error"></div>
+                <button class="change-btn">Продолжить</button>
+            </form>
+        </section>
+        <button class="log">Log</button>
+    </main>
+    <%- include('../partials/footer') %>
+    <div class="loading"><img src="/images/dark-loading.svg" alt=""></div>
+    <script src="/scripts/auth/change_password_email_script.js"></script>
+</body>
+</html>
+

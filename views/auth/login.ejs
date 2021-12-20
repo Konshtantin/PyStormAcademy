@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm</title>
+    <link rel="stylesheet" href="/stylesheets/auth/login.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main id="main">
+        <section class="login">
+            <h2 class="login-title">Авторизация</h2>
+            <form id="loginform">
+                <div class="login-error"></div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" placeholder="Электронная почта" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password" autocomplete="off" placeholder="Пароль" required>
+                </div>
+                <button class="log-btn">Продолжить</button>
+            </form>
+            <div class="links">
+                <div class="signuplink">Ещё не зарегистрировались? <a href="/auth/sign-up">Зарегистрироваться</a></div>
+                <div class="forgot">Забыли пароль? <a href="/auth/change">Сбросить пароль</a></div>
+            </div>  
+        </section>
+        <button class="log">Log</button>
+    </main>
+    <%- include('../partials/footer') %>
+    <div class="loading"><img src="/images/light-loading.svg" alt=""></div>
+    <script src="/scripts/auth/login_script.js"></script>
+</body>
+</html>

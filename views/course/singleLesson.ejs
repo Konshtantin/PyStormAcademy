@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm</title>
+    <link rel="stylesheet" href="/stylesheets/course/lesson.css">
+    <!-- <link rel="stylesheet" href="/highlight/styles/github-dark.min.css"> -->
+    <link rel="stylesheet" href="/highlight/styles/monokai-sublime.min.css">
+    <style type="text/css" media="screen">
+        #editor { 
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../partials/lessonHeader') %>
+    <main id="main">
+        <section class="theory">
+            <div class="theory-menu">
+                <div class="theory-menu__item text"><img src="/images/lesson/text.svg" alt=""></div>
+                <div class="theory-menu__item">Задание 1</div>
+                <div class="theory-menu__item">Задание 2</div>
+                <div class="theory-menu__item">Задание 3</div>
+            </div>
+            <div class="lesson-content">
+                Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности способствует подготовки и реализации существенных финансовых и административных условий. Не следует, однако забывать, что дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке направлений прогрессивного развития. Задача организации, в особенности же начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Задача организации, в особенности же дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. Значимость этих проблем настолько очевидна, что консультация с широким активом позволяет оценить значение существенных финансовых и административных условий.
+                <img src="/images/lesson/code.svg" alt="" class="code-example">
+                Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций
+                <div class="code">
+                    <pre><code class="language-python">from itertools import permutations
+seq = list(map(lambda n: "".join(n), permutations('КУСАТЬ', 5)))
+k = 0
+for x in seq:
+    if(x[0] != 'Ь' and not('СУК' in x)):
+        k += 1
+print(k)</code></pre>
+                </div>
+                Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности способствует подготовки и реализации существенных финансовых и административных условий. Не следует, однако забывать, что дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке направлений прогрессивного развития. Задача организации, в особенности же начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Задача организации, в особенности же дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. Значимость этих проблем настолько очевидна, что консультация с широким активом позволяет оценить значение существенных финансовых и административных условий.
+                <div class="code">
+                    <pre><code class="language-python">print("Hello world!")</code></pre>
+                </div>
+                Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций
+                <code>
+                    print("Hello World")
+                    a = input("p")
+                </code>
+            </div>
+        </section>
+        <section class="activity">
+            <div class="editor-field">
+                <div id="editor">print("Hello World")</div>
+            </div>
+            <div class="console-field">
+                <textarea class="ide-console" id="ide-console">Привет, мир!</textarea>
+            </div>
+            <div class="activity-btns">
+                <button class="run-code">RUN</button>
+                <button class="some-btn">BUTTON</button>
+            </div>
+        </section>
+    </main>
+    <script src="/highlight/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/courses/highlight-init.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/snippets/python.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/courses/editor-script.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

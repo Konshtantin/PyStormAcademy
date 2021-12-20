@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm</title>
+    <link rel="stylesheet" href="/stylesheets/auth/confirmEmail.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main id="main">
+        <div class="mail"><img src="/images/confirmEmail/mail.svg" alt=""></div>
+        <div class="as"><img src="/images/confirmEmail/at-symbol.svg" alt=""></div>
+        <section class="confirm-email">
+            <h2 class="nadiv">Пожалуйста, подтвердите электронную почту</h2>
+            <% if (template === 'sign-up') { %>
+                <div class="nbdiv">Мы отправили письмо на электронную почту <span class="u-email"><%= email %></span>. Cледуйте инструкциям в письме, чтобы завершить регистрацию. После подтверждения просто перейдите на нужную вам страницу. Если письмо не пришло, проверьте спам.</div>
+            <% } else if (template === 'login') { %>
+                <div class="nbdiv">Вы вошли в аккаунт, но чтобы пользоваться платформой, вы должны подтвердить электронную почту. Мы отправили письмо на электронный адрес <span class="u-email"><%= email %></span>. Cледуйте инструкциям в письме, чтобы завершить регистрацию. После подтверждения просто перейдите на нужную вам страницу. Если письмо не пришло, проверьте спам.</div>
+            <% } else if (template === 'change') { %>
+                <div class="nbdiv">Чтобы сбросить пароль, нужно подтвердить электронную почту. Мы отправили письмо на электронный адрес <span class="u-email"><%= email %></span>. Cледуйте инструкциям в письме, чтобы завершить регистрацию. После подтверждения завершите процесс сброса пароля. Если письмо не пришло, проверьте спам.</div>
+            <% } %>
+            
+            <div class="resend">Не пришло письмо? <div class="resend-time">Отправить ещё раз <span class="resend-timer"><%= breakTime %></span></div></div>
+            <div class="send-status"></div>
+        </section>
+        <button class="log">Log</button>
+    </main>
+    <%- include('../partials/footer') %>
+    <div class="loading"><img src="/images/dark-loading.svg" alt=""></div>
+    <script src="/scripts/auth/confirm_email_script.js"></script>
+</body>
+</html>
