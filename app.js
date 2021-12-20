@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cookie = require('cookie-parser')
 const compression = require('compression')
+const path = require('path')
 const helmet = require('helmet')
 const favicon = require('serve-favicon')
 
