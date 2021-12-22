@@ -25,7 +25,9 @@ const PORT = process.env.PORT || 3000
 
 // MongoDB Cloud connection 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(app.listen(PORT))
+    .then(app.listen(PORT, () => {
+        console.log("Server started on PORT" + PORT)
+    }))
     .catch(e => console.error(e))
 
 
