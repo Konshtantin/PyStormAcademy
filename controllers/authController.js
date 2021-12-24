@@ -45,6 +45,7 @@ async function sign_up_post(req, res) {
     const user = await User.create({name, surname, email, email_confirmed: false, password: hash, last_email_send: Date.now()})
     const link = await Link.create({user: user._id, created: Date.now(), type: 'confirm'})
     const emailStatus = await sendConfirm(email, `http://pystorm.xyz/auth/confirm/${link._id}`)
+    console.log(emailStatus)
     if(emailStatus == 'Error') {
         User.findByIdAndDelete(user._id, async () => {
             await Link.findByIdAndDelete(link._id)
