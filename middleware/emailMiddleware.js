@@ -41,6 +41,7 @@ function sendConfirm(email, confirmLink) {
         fs.readFile(confirm_path, {encoding: 'utf-8'}, async (err, ejsString) => {
             const htmlString = await ejs.render(ejsString, {link: confirmLink}, {async: true})
             if(err) {
+                console.log('Error with readFile')
                 resolve('Error')
             }
             const mailData = {
@@ -52,12 +53,14 @@ function sendConfirm(email, confirmLink) {
             console.time('transporter1')
             transporters.transporter1.sendMail(mailData, (err, info) => {
                 if(err) {
+                    console.log(err)
                     mailData.from = 'pystorm.company@gmail.com'
                     transporters.transporter2.sendMail(mailData, (err, info) => {
                         if(err) {
                             mailData.from = 'pystorm.comp@gmail.com'
                             transporters.transporter3.sendMail(mailData, (err, info) => {
                                 if(err) {
+                                    console.log("Error with send")
                                     resolve('Error')
                                 } else {
                                     resolve(3)
