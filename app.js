@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const cookie = require('cookie-parser')
 const compression = require('compression')
 const path = require('path')
-const helmet = require('helmet')
 const favicon = require('serve-favicon')
 
 require('dotenv').config()
@@ -33,7 +32,6 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 app.use(morgan('dev'))
 app.use(compression())
-app.use(helmet())
 
 // serving favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
