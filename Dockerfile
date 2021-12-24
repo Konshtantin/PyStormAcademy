@@ -16,7 +16,7 @@ RUN npm install
 
 COPY . ./
 
-ENV PORT 3000
+ENV PORT 80
 
 ENV MONGO_URI mongodb+srv://<name>:<password>@<db_url>?retryWrites=true&w=majority
 
