@@ -44,7 +44,7 @@ async function sign_up_post(req, res) {
     const hash = await bcrypt.hash(password, 10)
     const user = await User.create({name, surname, email, email_confirmed: false, password: hash, last_email_send: Date.now()})
     const link = await Link.create({user: user._id, created: Date.now(), type: 'confirm'})
-    const emailStatus = await sendConfirm(email, `http://localhost:3000/auth/confirm/${link._id}`)
+    const emailStatus = await sendConfirm(email, `http://pystorm.xyz/auth/confirm/${link._id}`)
     if(emailStatus == 'Error') {
         User.findByIdAndDelete(user._id, async () => {
             await Link.findByIdAndDelete(link._id)
@@ -231,7 +231,7 @@ function resend_email_post(req, res) {
                 const time = 180 - Math.trunc((Date.now() - user.last_email_send)/1000)
                 if(time <= 1) {
                     const link = await Link.findOne({user: user._id})
-                    const emailStatus = await sendConfirm(user.email, `http://localhost:3000/auth/confirm/${link._id}`)
+                    const emailStatus = await sendConfirm(user.email, `http://pystorm.xyz/auth/confirm/${link._id}`)
                     user.total_emails = user.total_emails + 1
                     User.findByIdAndUpdate(user._id, user, () => {
                         if(emailStatus == 'Error') {
@@ -261,7 +261,7 @@ function resend_email_post(req, res) {
                     const time = 180 - Math.trunc((Date.now() - user.last_email_send)/1000)
                     if(time <= 1) {
                         const link = await Link.findOne({user: user._id})
-                        const emailStatus = await sendConfirm(user.email, `http://localhost:3000/auth/confirm/${link._id}`)
+                        const emailStatus = await sendConfirm(user.email, `http://pystorm.xyz/auth/confirm/${link._id}`)
                         user.total_emails = user.total_emails + 1
                         User.findByIdAndUpdate(user._id, user, () => {
                             if(emailStatus == 'Error') {
@@ -317,7 +317,7 @@ async function change_password_post_email(req, res) {
     if(!link) {
         link = await Link.create({user: user._id, created: Date.now(), type: 'change'})
     }
-    const emailStatus = await sendChange(email, user.name, `http://localhost:3000/auth/change/${link._id}`)
+    const emailStatus = await sendChange(email, user.name, `http://pystorm.xyz/auth/change/${link._id}`)
     user.total_emails = user.total_emails + 1
     User.findByIdAndUpdate(user._id, user, () => {
         if(emailStatus === 'Error') {
