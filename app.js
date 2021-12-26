@@ -33,7 +33,6 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 app.use(morgan('dev'))
 
-app.use(helmet.contentSecurityPolicy())
 app.use(helmet.crossOriginOpenerPolicy())
 app.use(helmet.hidePoweredBy())
 
