@@ -33,9 +33,15 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 app.use(morgan('dev'))
 
-app.use(helmet.crossOriginOpenerPolicy())
+app.use(helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+        "font-src": ['self', 'fonts.googleapis.com'],
+        "script-src": ["self", "pystorm.xyz"],
+        "style-src": ["self", "pystorm.xyz"]
+    }
+}))
 app.use(helmet.hidePoweredBy())
-
 app.use(compression())
 
 // serving favicon
