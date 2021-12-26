@@ -5,6 +5,7 @@ const cookie = require('cookie-parser')
 const compression = require('compression')
 const path = require('path')
 const favicon = require('serve-favicon')
+const helmet = require('helmet')
 
 require('dotenv').config()
 
@@ -46,6 +47,8 @@ app.use(express.static('public'))
 // setting EJS view engine config
 app.set('views', 'views')
 app.set('view engine', 'ejs')
+
+app.use(helmet())
 
 // adding PORT for CodeRunController
 function addPort(req, res, next) {
