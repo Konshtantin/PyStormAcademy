@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 80
 // MongoDB Cloud connection 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(app.listen(PORT, () => {
-        console.log("Server started on PORT" + PORT)
+        console.log("Server started on PORT " + PORT)
     }))
     .catch(e => console.error(e))
 
@@ -52,8 +52,6 @@ app.use(express.static('public'))
 // setting EJS view engine config
 app.set('views', 'views')
 app.set('view engine', 'ejs')
-
-app.use(helmet())
 
 // adding PORT for CodeRunController
 function addPort(req, res, next) {
