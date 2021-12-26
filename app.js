@@ -5,7 +5,6 @@ const cookie = require('cookie-parser')
 const compression = require('compression')
 const path = require('path')
 const favicon = require('serve-favicon')
-const helmet = require('helmet')
 
 require('dotenv').config()
 
@@ -32,17 +31,6 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 
 app.use(morgan('dev'))
-
-app.use(helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-        "font-src": ['self', 'fonts.googleapis.com'],
-        "script-src": "http://pystorm.xyz",
-        "style-src": "http://pystorm.xyz",
-        "img-src": "http://pystorm.xyz"
-    }
-}))
-app.use(helmet.hidePoweredBy())
 app.use(compression())
 
 // serving favicon
