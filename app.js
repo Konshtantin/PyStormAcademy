@@ -54,7 +54,9 @@ function addPort(req, res, next) {
 }
 
 app.use(checkConfirm, checkNotLogin)
-
+app.get('/.well-known/pki-validation/1CA414376B5CC49C3C3985F7F51815B9.txt', (req, res) => {
+    res.sendFile(path.join(__dirname, '1CA414376B5CC49C3C3985F7F51815B9.txt'))
+})
 app.use('', indexRouter)
 app.use('/run', addPort, codeRunRouter)
 app.use('/auth', authRouter)
