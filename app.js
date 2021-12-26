@@ -53,6 +53,8 @@ app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 
+app.use(helmet())
+
 // adding PORT for CodeRunController
 function addPort(req, res, next) {
     req.body.PORT = PORT
