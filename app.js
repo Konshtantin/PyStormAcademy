@@ -5,6 +5,7 @@ const cookie = require('cookie-parser')
 const compression = require('compression')
 const path = require('path')
 const favicon = require('serve-favicon')
+const helmet = require('helmet')
 
 require('dotenv').config()
 
@@ -31,6 +32,11 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 
 app.use(morgan('dev'))
+
+app.use(helmet.contentSecurityPolicy())
+app.use(helmet.crossOriginOpenerPolicy())
+app.use(helmet.hidePoweredBy())
+
 app.use(compression())
 
 // serving favicon
