@@ -16,7 +16,6 @@
         enableSnippets: true,
         enableLiveAutocompletion: true
     });
-    console.log(editor)
     runButton.addEventListener('click', (event) => {
         if(closeRun) {
             return

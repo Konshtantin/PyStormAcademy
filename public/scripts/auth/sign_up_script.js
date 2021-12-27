@@ -8,10 +8,6 @@
     const checkNameSymbols = new RegExp(/^[a-zA-Zа-яА-ЯёЁ-]+$/)
     const checkPasswordSymbols = new RegExp(/^[\wа-яА-ЯёЁ\Q#$%|&\E]+$/)
     const loading = document.querySelector('.loading')
-    const log = document.querySelector('.log')
-    log.onclick = () => {
-        loading.classList.toggle('active')
-    }
     let close = false
     function clearErrors() {
         nameError.textContent = ''

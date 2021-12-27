@@ -2,10 +2,6 @@
     const changeForm = document.querySelector('#changeform')
     const emailError = document.querySelector('.email-error')
     const loading = document.querySelector('.loading')
-    const log = document.querySelector('.log')
-    log.onclick = () => {
-        loading.classList.toggle('active')
-    }
     let close = false
     changeForm.addEventListener('submit', (event) => {
         event.preventDefault()
@@ -25,7 +21,6 @@
             .then(response => response.json())
             .then(data => {
                 loading.classList.remove('active')
-                console.log(data)
                 close = false
                 if(data.status) {
                     const sent = document.createElement('div')
