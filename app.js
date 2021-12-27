@@ -4,6 +4,9 @@ const mongoose = require('mongoose')
 const cookie = require('cookie-parser')
 const compression = require('compression')
 const path = require('path')
+const https = require('https')
+const http = require('http')
+const fs = require('fs')
 const favicon = require('serve-favicon')
 
 require('dotenv').config()
@@ -20,14 +23,17 @@ const {checkConfirm, checkNotLogin} = require('./middleware/authMiddleware')
 
 const app = express()
 
-const PORT = process.env.PORT || 80
+const HTTPPORT = process.env.HTTPPORT || 80
+const HTTPSPORT = process.env.HTTPSPORT || 443
 
-// MongoDB Cloud connection 
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(app.listen(PORT, () => {
-        console.log("Server started on PORT " + PORT)
-    }))
-    .catch(e => console.error(e))
+// enable https server 
+const httpsServer = https.createServer({
+    cert: fs.readFileSync(path.join(__dirname, 'private', 'cert.pem'), 'utf-8'),
+    key: fs.readFileSync(path.join(__dirname, 'private', 'private.pem'), 'utf-8'),
+    ca: fs.readFileSync(path.join(__dirname, 'private', 'chain.pem'), 'utf-8')
+}, app)
+
+const httpServer = http.createServer(app)
 
 
 app.use(morgan('dev'))
@@ -49,17 +55,28 @@ app.set('view engine', 'ejs')
 
 // adding PORT for CodeRunController
 function addPort(req, res, next) {
-    req.body.PORT = PORT
+    req.body.PORT = HTTPPORT
     next()
 }
 
 app.use(checkConfirm, checkNotLogin)
-app.get('/.well-known/pki-validation/1CA414376B5CC49C3C3985F7F51815B9.txt', (req, res) => {
-    res.sendFile(path.join(__dirname, '1CA414376B5CC49C3C3985F7F51815B9.txt'))
-})
+
 app.use('', indexRouter)
 app.use('/run', addPort, codeRunRouter)
 app.use('/auth', authRouter)
 app.use('/courses', courseRouter)
 app.use('/fill', courseFilling)
+
+
+// MongoDB Cloud connection 
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        httpsServer.listen(HTTPSPORT, () => {
+            console.log(`HTTPS server started on port ${HTTPSPORT}`)
+        })
+        httpServer.listen(HTTPPORT, () => {
+            console.log(`HTTP server started on port ${HTTPPORT}`)
+        })
+    })
+    .catch(e => console.error(e))
 

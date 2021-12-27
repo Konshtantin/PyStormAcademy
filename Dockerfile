@@ -16,7 +16,9 @@ RUN npm install
 
 COPY . ./
 
-ENV PORT 80
+ENV HTTPPORT 80
+
+ENV HTTPSPORT 443
 
 ENV MONGO_URI mongodb+srv://<name>:<password>@<db_url>?retryWrites=true&w=majority
 
