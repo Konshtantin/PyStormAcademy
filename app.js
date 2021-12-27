@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cookie = require('cookie-parser')
 const compression = require('compression')
+const helmet = require('helmet')
 const path = require('path')
 const https = require('https')
 const http = require('http')
@@ -37,6 +38,9 @@ const httpServer = http.createServer(app)
 
 
 app.use(morgan('dev'))
+
+app.use(helmet())
+
 app.use(compression())
 
 // serving favicon
