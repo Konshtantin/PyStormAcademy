@@ -18,8 +18,6 @@ const courseRouter = require('./routers/courseRouter.js')
 const codeRunRouter = require('./routers/codeRunRouter.js')
 const indexRouter = require('./routers/indexRouter.js')
 
-const courseFilling = require('./routers/courseFilling.js')
-
 const {checkConfirm, checkNotLogin} = require('./middleware/authMiddleware')
 
 const app = express()
@@ -53,6 +51,7 @@ app.use(cookie())
 
 // serving public files
 app.use(express.static('public'))
+
 // setting EJS view engine config
 app.set('views', 'views')
 app.set('view engine', 'ejs')
@@ -69,7 +68,6 @@ app.use('', indexRouter)
 app.use('/run', addPort, codeRunRouter)
 app.use('/auth', authRouter)
 app.use('/courses', courseRouter)
-app.use('/fill', courseFilling)
 
 
 // MongoDB Cloud connection 
