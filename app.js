@@ -26,20 +26,21 @@ const {checkConfirm, check_SESS_ID} = require('./middleware/authMiddleware')
 const app = express()
 
 const HTTPPORT = process.env.HTTPPORT || 80
-// const HTTPSPORT = process.env.HTTPSPORT || 443
+const HTTPSPORT = process.env.HTTPSPORT || 443
 
 // enable https server 
-// const httpsServer = https.createServer({
-//     cert: fs.readFileSync(path.join(__dirname, 'private', 'cert.pem'), 'utf-8'),
-//     key: fs.readFileSync(path.join(__dirname, 'private', 'private.pem'), 'utf-8'),
-//     ca: fs.readFileSync(path.join(__dirname, 'private', 'chain.pem'), 'utf-8')
-// }, app)
+const httpsServer = https.createServer({
+    cert: fs.readFileSync(path.join(__dirname, 'private', 'cert.pem'), 'utf-8'),
+    key: fs.readFileSync(path.join(__dirname, 'private', 'private.pem'), 'utf-8'),
+    ca: fs.readFileSync(path.join(__dirname, 'private', 'chain.pem'), 'utf-8')
+}, app)
 
 const httpServer = http.createServer(app)
 
 
 app.use(morgan('dev'))
 app.use(compression())
+app.use(helmet())
 
 
 // serving favicon
@@ -77,9 +78,9 @@ app.use('/about', aboutRouter)
 // MongoDB Cloud connection 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
-        // httpsServer.listen(HTTPSPORT, () => {
-        //     console.log(`HTTPS server started on port ${HTTPSPORT}`)
-        // })
+        httpsServer.listen(HTTPSPORT, () => {
+            console.log(`HTTPS server started on port ${HTTPSPORT}`)
+        })
         httpServer.listen(HTTPPORT, () => {
             console.log(`HTTP server started on port ${HTTPPORT}`)
         })
