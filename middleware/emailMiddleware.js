@@ -61,16 +61,19 @@ function sendConfirm(email, confirmLink) {
                                     resolve('Error')
                                     console.log(err)
                                 } else {
+                                    console.log('Transporter 3')
                                     resolve(3)
                                 }
                             })
                         } else {
+                            console.log('Transporter 2')
                             resolve(2)
                         }
                     })
                 } 
                 else { 
                     console.timeEnd('transporter1')
+                    console.log('Transporter 1')
                     resolve(1)
                 }
             })
@@ -102,15 +105,18 @@ function sendChange(email, name, changeLink) {
                                     resolve('Error')
                                     console.log(err)
                                 } else {
+                                    console.log('Transporter 3')
                                     resolve(3)
                                 }
                             })
                         } else {
+                            console.log('Transporter 2')
                             resolve(2)
                         }
                     })
                 } else {
                     console.timeEnd('transporter1')
+                    console.log('Transporter 1')
                     resolve(1)
                 }
             })
