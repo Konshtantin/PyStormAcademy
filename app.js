@@ -40,7 +40,7 @@ const httpServer = http.createServer(app)
 
 app.use(morgan('dev'))
 app.use(compression())
-app.use(helmet())
+// app.use(helmet())
 
 
 // serving favicon
