@@ -1,0 +1,25 @@
+<h2 class='ls-title first'>Перевернуть срезом</h2>
+<p>Этот способ был изучен в теме "срезы списков". Чтобы перевернуть список используя срез, первые два параметра среза упускаются, а параметр <span class='line-code'>step</span> указывается <span class='line-code'>-1</span>. Сам список при этом не изменяется:</p>
+<div class='code'><pre><code class='language-python'>sentence = ['Привет', 'от', 'PyStorm', 'академии', '!']
+
+print( sentence[::-1] ) # ['!', 'академии', 'PyStorm', 'от', 'Привет']
+
+print(sentence) # не изменился
+</code></pre></div>
+<h2 class='ls-title'>Функция <span class='line-code'>reversed()</span></h2>
+<p>Функция <span class='line-code'>reversed</span> также не изменяет саму коллекцию. А возвращает она итератор <span class='line-code'>reversed object</span> который обращается к последовательности в обратном порядке. Но также можно привести его к типу данных <span class='line-code'>list</span>, чтобы было удобнее использовать:</p>
+<div class='code'><pre><code class='language-python'>numbers = [1, 2, 3, 4, 5]
+
+reversed_numbers = reversed(numbers)
+
+print(reversed_numbers) # &#60;list_reverseiterator object at ...>
+
+print(list(reversed_numbers)) # [5, 4, 3, 2, 1]
+</code></pre></div>
+<h2 class='ls-title'>Метод списков <span class='line-code'>.reverse()</span></h2>
+<p>Данный метод уже изменяет саму структуру списка и ничего не возвращает:</p>
+<div class='code'><pre><code class='language-python'>numbers = [1, 2, 3, 4, 5]
+
+numbers.reverse()
+
+print(numbers)</code></pre></div>

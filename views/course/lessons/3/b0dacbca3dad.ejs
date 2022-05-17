@@ -1,0 +1,26 @@
+<h2 class='ls-title first'>Списки в Python</h2>
+<p>Список - это изменяемая упорядоченная коллекция данных, в которой можно хранить данные разных типов. Список обозначается квадратными скобками и элементы в нем записываются через запятую:</p>
+<div class='code'><pre><code class='language-python'>my_list = [1, 2, 3, 4, 5]
+
+print(type(my_list)) # &#60;class 'list'></code></pre></div>
+<p>Представленный выше код выведет <span class='line-code'>&#60;class 'list'></span>(<span class='line-code'>list</span> с англ. список), что доказывает успешное создание списка. Элементами списка могут быть значения абсолютно разных типов данных и даже сами списки могут хранится внутри другого списка:</p>
+<div class='code'><pre><code class='language-python'>my_new_list = ['Гавань', [1, 6], 27, False]</code></pre></div>
+<h2 class='ls-title'>Доступ к элементам</h2>
+<p>Доступ к определенному элементу списка осуществляется с помощью индексов так же, как в строках. Помним, что индексация начинается с <span class='line-code'>0</span> и индекс последнего элемента на <span class='line-code'>1</span> меньше длины всего списка:</p>
+<div class='code'><pre><code class='language-python'>cars = ['Mazda', 'Nissan', 'Toyota']
+
+print(cars[2]) # Toyota</code></pre></div>
+<p>Обратите внимание, что запятые между элементами не считаются элементами списка и индексов у них нет!</p>
+<p>Отрицательная индексация также работает со списками. Индекс последнего элемента равен <span class='line-code'>-1</span>, а индекс первого - длина списка со знаком минус:</p>
+<div class='code'><pre><code class='language-python'>cars = ['Mazda', 'Nissan', 'Toyota']
+
+print(cars[-2]) # Nissan
+print(cars[-3]) # Mazda</code></pre></div>
+<p>Отрицательный индекс в коллекции можно воспринимать как <span class='line-code'>длина коллекции + отрицательный индекс</span>, например:</p>
+<div class='code'><pre><code class='language-python'>numbers = [1, 2, 3, 4, 5]
+index = -2
+
+numbers[index] # 4
+
+numbers[len(numbers) + index] # та же 4</code></pre></div>
+

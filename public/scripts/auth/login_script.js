@@ -2,6 +2,10 @@
     const loginForm = document.querySelector('#loginform')
     const loginError = document.querySelector('.login-error')
     const loading = document.querySelector('.loading')
+    const log = document.querySelector('.log')
+    log.onclick = () => {
+        loading.classList.toggle('active')
+    }
     let close = false
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault()

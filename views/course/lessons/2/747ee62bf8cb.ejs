@@ -1,0 +1,33 @@
+<h2 class='ls-title first'>Операторы сравнения</h2>
+<p>Для сравнения двух величин в Python есть операторы сравнения. Причем сравнение чисел в Python ничем не отличается от сравнения в математике. Основные операторы сравнения: </p>
+<h3 class='ls-mini-title'>Больше <span class='line-code'>></span></h3>
+<div class='code'><pre><code class='language-python'>a = 101
+
+a > 0 # True (с англ. правда)
+a-1 > a # False (с англ. ложь)</code></pre></div>
+<h3 class='ls-mini-title'>Меньше <span class='line-code'><</span></h3>
+<div class='code'><pre><code class='language-python'>b = -24
+
+b < -24 #  False, т.к b не меньше -24
+b < 10 #  True</code></pre></div>
+<h3 class='ls-mini-title'>Больше или равно <span class='line-code'>>=</span></h3>
+<div class='code'><pre><code class='language-python'>c = 10
+
+c >= 10 #  True
+c >= 0 #  False</code></pre></div>
+<h3 class='ls-mini-title'>Меньше или равно <span class='line-code'><=</span></h3>
+<div class='code'><pre><code class='language-python'>999 <= 1000 #  True
+
+len("12345") <= 3 #  False, т.к длина строки не меньше и не равна 3 
+</code></pre></div>
+<h3 class='ls-mini-title'>Равно <span class='line-code'>==</span></h3>
+<p><strong>Не путать</strong> с оператором присваивания <span class='line-code'>=</span>! В операторе сравнения два символа <span class='line-code'>==</span>: </p>
+<div class='code'><pre><code class='language-python'>2 = 3 # ошибка SyntaxError, т.к использован не тот оператор
+
+50 == 49+1 #  True
+# сначала посчитается 49+1, затем результат сравнится с 50</code></pre></div>
+<h3 class='ls-mini-title'>Не равно <span class='line-code'>!=</span></h3>
+<p>Возвращает <span class='line-code'>True</span>, если два операнда не равны:</p>
+<div class='code'><pre><code class='language-python'>len("one") != 1 # True, т.к 3 не равно 1
+
+4 != 4 # False</code></pre></div>

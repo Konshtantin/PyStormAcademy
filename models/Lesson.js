@@ -18,6 +18,10 @@ const LessonSchema = new Schema({
         type: Number,
         required: true
     },
+	tasks_count: {
+        type: Number,
+        required: true
+    },
     id: {
         type: String,
         required: true

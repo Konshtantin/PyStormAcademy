@@ -1,41 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyStorm</title>
+    <title>PyStorm | Обучение</title>
+    <link rel="stylesheet" href="/stylesheets/partials/miniHeader.css">
     <link rel="stylesheet" href="/stylesheets/course/courses.css">
-    <link href='https://unpkg.com/boxicons@2.1.0/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/stylesheets/partials/footer.css">
+    <script src="/scripts/chart.js"></script>
 </head>
 <body>
-    <%- include('../partials/header') %>
+    <%- include('../partials/miniHeader') %>
     <main id="main">
         <div class="module-wrapper">
             <section class="modules">
                 <h2 class="modules-title">Модули уроков</h2>
                 <div class="module-list">
                     <% modules.forEach(mdl => { %>
-                        <div class="module__item"><%= mdl.name %> <img src="./images/courses/caret.svg" alt="" class="caret"></div>
+                        <% if (moduleName == mdl.name) { %>
+                            <div class="module__item current"><a href="/courses/<%= mdl.id %>"><%= mdl.name %></a></div>
+                        <% } else { %>
+                            <div class="module__item"><a href="/courses/<%= mdl.id %>"><%= mdl.name %></a></div>
+                        <% } %>
                     <% }) %>
                 </div>
             </section>
             <section class="module-lessons">
-                <h2 class="module-title">Название модуля</h2>
+                <h2 class="module-title"><%= moduleName %></h2>
                 <div class="lesson-list">
-                    <div class="lesson__item"> <a href="/courses/lesson/id">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</a></div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
-                    <div class="lesson__item">Тема модуля Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, officia!</div>
+                    <% lessons.forEach(lesson => { %>
+                        <div class="lesson__item"> <a href="/lesson/<%= lesson.id %>"><%= lesson.title %></a></div>
+                    <% }) %>
                 </div>
+            </section>
+            <section class="module-stats">
+                <div class="stats-title">Статистика</div>
+                <% if (locals.user) { %>
+                    <div class="lessons-stat">
+                        <canvas id="lessons-chart" data-lcp="<%= lcp %>" data-lc="<%= lc %>"></canvas>
+                    </div>
+                    <div class="chart-title">Завершенные уроки</div>
+                    <div class="tasks-stat">
+                        <canvas id="tasks-chart" data-tcp="<%= tcp %>" data-tc="<%= tc %>"></canvas>
+                    </div>
+                    <div class="chart-title">Выполненные задания</div>
+                <% } else { %>
+                    <div class="lessons-stat">
+                        <canvas id="lessons-chart" data-lcp="0" data-lc="<%= lc %>"></canvas>
+                    </div>
+                    <div class="chart-title">Завершенные уроки</div>
+                    <div class="tasks-stat">
+                        <canvas id="tasks-chart" data-tcp="0" data-tc="<%= tc %>"></canvas>
+                    </div>
+                    <div class="chart-title">Выполненные задания</div>
+                <% } %>
+                
             </section>
         </div>
     </main>
     <%- include('../partials/footer') %>
-    <script src="./scripts/courses/courses.js"></script>
+    <script src="/scripts/profile-script.js"></script>
+    <script src="/scripts/courses/courses.js"></script>
 </body>
 </html>

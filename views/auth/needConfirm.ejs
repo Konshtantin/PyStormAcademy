@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyStorm</title>
+    <title>PyStorm | Подтверждение e-mail</title>
+    <link rel="stylesheet" href="/stylesheets/partials/header.css">
     <link rel="stylesheet" href="/stylesheets/auth/confirmEmail.css">
+    <link rel="stylesheet" href="/stylesheets/partials/footerDark.css">
 </head>
 <body>
     <%- include('../partials/header') %>
     <main id="main">
-        <div class="mail"><img src="/images/confirmEmail/mail.svg" alt=""></div>
-        <div class="as"><img src="/images/confirmEmail/at-symbol.svg" alt=""></div>
+        <div class="mail"><img src="/images/confirmEmail/mail.svg" alt="" draggable="false"></div>
+        <div class="as"><img src="/images/confirmEmail/at-symbol.svg" alt="" draggable="false"></div>
         <section class="confirm-email">
             <h2 class="nadiv">Пожалуйста, подтвердите электронную почту</h2>
             <% if (template === 'sign-up') { %>
@@ -25,6 +27,7 @@
             <div class="resend">Не пришло письмо? <div class="resend-time">Отправить ещё раз <span class="resend-timer"><%= breakTime %></span></div></div>
             <div class="send-status"></div>
         </section>
+        <button class="log">Log</button>
     </main>
     <%- include('../partials/footer') %>
     <div class="loading"><img src="/images/dark-loading.svg" alt=""></div>

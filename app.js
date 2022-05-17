@@ -15,10 +15,13 @@ require('dotenv').config()
 //routers
 const authRouter = require('./routers/authRouter.js')
 const courseRouter = require('./routers/courseRouter.js')
+const lessonsRouter = require('./routers/lessonsRouter.js')
 const codeRunRouter = require('./routers/codeRunRouter.js')
 const indexRouter = require('./routers/indexRouter.js')
+const tasksRouter = require('./routers/tasksRouter.js')
+const aboutRouter = require('./routers/aboutRouter.js')
 
-const {checkConfirm, checkNotLogin} = require('./middleware/authMiddleware')
+const {checkConfirm, check_SESS_ID} = require('./middleware/authMiddleware')
 
 const app = express()
 
@@ -36,10 +39,9 @@ const httpServer = http.createServer(app)
 
 
 app.use(morgan('dev'))
-
+app.use(compression())
 app.use(helmet())
 
-app.use(compression())
 
 // serving favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
@@ -62,12 +64,15 @@ function addPort(req, res, next) {
     next()
 }
 
-app.use(checkConfirm, checkNotLogin)
+app.use(checkConfirm, check_SESS_ID)
 
 app.use('', indexRouter)
+app.use('/lesson', lessonsRouter)
 app.use('/run', addPort, codeRunRouter)
 app.use('/auth', authRouter)
 app.use('/courses', courseRouter)
+app.use('/task', tasksRouter)
+app.use('/about', aboutRouter)
 
 
 // MongoDB Cloud connection 

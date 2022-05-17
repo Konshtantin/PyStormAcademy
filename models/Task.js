@@ -5,21 +5,21 @@ const TaskSchema = new Schema({
         type: String,
         required: true
     },
-    text: {
+    filename: {
         type: String,
         required: true
     },
-    solution: {
-        type: String,
+    lesson: {
+        type: Schema.ObjectId,
+        ref: 'Lesson',
+        required: true
+    },
+    module_number: {
+        type: Number,
         required: true
     },
     answer: {
-        type: String,
-        required: true
-    },
-    difficulty: {
-        type: String,
-        enum: ['easy', 'medium', 'hard']
+        type: String
     },
     number: {
         type: Number,
@@ -28,6 +28,18 @@ const TaskSchema = new Schema({
     id: {
         type: String,
         required: true
+	},
+    include_code: {
+        type: String
+    },
+    add_code_before: {
+        type: String
+    },
+    add_code_after: {
+        type: String
+    },
+    test_input: {
+        type: String
     }
 })
 module.exports = model('Task', TaskSchema)

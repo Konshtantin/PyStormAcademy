@@ -1,0 +1,21 @@
+<h2 class='ls-title first'>Тернарный оператор</h2>
+<p>Тернарный оператор или условное выражение, как его называют в Python, возвращает что-то в зависимости от того, является условие истиной или ложью. Он используется, если не нужна полноценная конструкция <span class='line-code'>if-else</span> потому что просто короче:</p>
+<div class='code'><pre><code class='language-python'>is_good = True
+
+result = 'Хорошо' if is_good else 'Плохо'</code></pre></div>
+<p>Тот же код с полноценной <span class='line-code'>if-else</span> выглядит так:</p>
+<div class='code'><pre><code class='language-python'>is_good = True
+result = '' # объявили переменную result
+
+if is_good:
+    result = 'Хорошо'
+else:
+    result = 'Плохо'</code></pre></div>
+<p>Тернарный оператор удобнее, если условия и код в них не слишком большие. Схема использования тернарного оператора такая:</p>
+<div class='code'><pre><code class='language-python'>&#60;значение, если уловие истинно> if &#60;условие> else &#60;значение, если условие ложно></code></pre></div>
+<p> Не стоит его использовать вместо <span class='line-code'>if-else</span>, если условия и код, который нужно выполнить в условии объемный, потому что это сильно ударит по читаемости кода. Ещё один пример использования:</p>
+<div class='code'><pre><code class='language-python'>user_num = int(input("Введите число: "))
+
+print('+' if user_num >= 0 else '-')</code></pre></div>
+<p>Выведется <span class='line-code'>+</span>, если число пользователя больше или равно нулю и минус, если меньше нуля.</p>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm | <%= lesson.title %></title>
+    <link rel="stylesheet" href="/stylesheets/partials/miniHeader.css">
+    <link rel="stylesheet" href="/stylesheets/course/lesson.css">
+    <link rel="stylesheet" href="/stylesheets/partials/footer.css">
+    <link rel="stylesheet" href="/highlight/styles/github.min.css">
+    <!-- <link rel="stylesheet" href="/highlight/styles/monokai-sublime.min.css"> -->
+</head>
+<body>
+    <%- include('../partials/miniHeader') %>
+    <main id="main">
+        <section class="theory">
+            <div class="back-button"><a href="/courses/<%= lesson_module.id %>"><img src="/images/lesson/back-arrow.svg" alt=""> Вернуться к модулю</a></div>
+            <div class="tasks-field">
+                <% if (tasks.length > 0) { %>
+                    <div class="task-field__title">Практические задания:</div>
+                    <% if (tasks.length == 1) { %>
+                        <div class="task-list one">
+                    <% } else { %>
+                        <div class="task-list">
+                    <% } %>
+                        <% tasks.forEach(task => { %>
+                            <a href="/task/<%= task.id %>" class="task-list__item" title="<%= task.title %>"><%= task.number %></a>
+                        <% }) %>
+                    </div>
+                    <div class="tasks-prompt">нажмите на номер задания</div>
+                <% } else { %>
+                    <div class="task-field__title">Задания для практики разрабатываются</div>
+                <% } %>
+                
+            </div>
+            <div class="lesson-content"><%- include(`./lessons/${lesson_module.number}/${lesson.filename}.ejs`) %></div>
+        </section>
+        <section class="activity">
+            <div class="editor-field">
+                <div id="editor"></div>
+            </div>
+            <div class="console-field">
+                <textarea class="ide-console" id="ide-console"></textarea>
+            </div>
+            <div class="run-code"><img src="/images/lesson/run-code.svg" alt="run_code" draggable="false"></div>
+        </section>
+    </main>
+    <script src="/highlight/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/courses/highlight-init.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/snippets/python.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/courses/lesson-editor-script.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/profile-script.js"></script>
+</body>
+</html>

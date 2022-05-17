@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyStorm</title>
+    <title>PyStorm | Регистрация</title>
+    <link rel="stylesheet" href="/stylesheets/partials/header.css">
     <link rel="stylesheet" href="/stylesheets/auth/sign-up.css">
+    <link rel="stylesheet" href="/stylesheets/partials/footer.css">
 </head>
 <body>
     <%- include('../partials/header') %>
@@ -17,10 +19,10 @@
                     <input type="text" name="name" id="name" autocomplete="off" placeholder="Ваше имя" required>
                     <div class="name error"></div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="text" name="surname" id="surname" autocomplete="off" placeholder="Ваша фамилия" required>
                     <div class="surname error"></div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <input type="email" name="email" id="email" placeholder="Электронная почта" required>
                     <div class="email error"></div>
@@ -38,6 +40,7 @@
             </form>    
             <div class="loginlink">Уже есть аккаунт? <a href="/auth/login">Войти</a></div>
         </section>
+        <button class="log">Log</button>
     </main>
     <%- include('../partials/footer') %>
     <div class="loading"><img src="/images/light-loading.svg" alt=""></div>

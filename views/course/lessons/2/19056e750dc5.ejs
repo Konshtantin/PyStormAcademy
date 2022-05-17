@@ -1,0 +1,28 @@
+<h2 class='ls-title first'>Объединение выражений операторами <span class='line-code'>and</span> и <span class='line-code'>or</span></h2>
+<p>Логические операторы <span class='line-code'>and</span> и <span class='line-code'>or</span> позволяют объединять несколько условий. Они возвращают значения <span class='line-code'>True</span>/<span class='line-code'>False</span> в зависимости от операндов:</p>
+<h3 class='ls-mini-title'>Оператор <span class='line-code'>and</span></h3>
+<p>Оператор <span class='line-code'>and</span>(с англ. и) возвращает <span class='line-code'>True</span>, только если оба операнда равны <span class='line-code'>True</span>. И возвращает <span class='line-code'>False</span>, если хотя бы один из операндов равен <span class='line-code'>False</span>:</p>
+<div class='code'><pre><code class='language-python'>num = int(input('Введите число:'))
+
+if num%2 == 0 and num > 0: # (1)
+    print('Положительное четное число')</code></pre></div>
+<p>На строке <span class='line-code'>(1)</span> два условия объединены в одно, что экономит место и делает код более читаемым, чем такой же, только без использования <span class='line-code'>and</span>:</p>
+<div class='code'><pre><code class='language-python'>num = int(input('Введите число:'))
+
+if num%2 == 0: # (1)
+    if num > 0:
+        print('Положительное четное число')</code></pre></div>
+<p>Выражением <span class='line-code'>num%2 == 0</span> мы определяем четность числа сравнивая с нулем остаток от деления числа на 2.</p>
+<h3 class='ls-mini-title'>Оператор <span class='line-code'>or</span></h3>
+<p>Логический оператор <span class='line-code'>or</span>(с англ. или) возвращает <span class='line-code'>True</span>, если хотя бы один из операндов равен <span class='line-code'>True</span>, а <span class='line-code'>False</span> возвращает только если оба операнда равны <span class='line-code'>False</span>:</p>
+<div class='code'><pre><code class='language-python'>if 2 > 1 or 0 != 0: # (1)
+    print('Эта строка выполнится')</code></pre></div>
+<p>Условие на строке <span class='line-code'>(1)</span> будет равно <span class='line-code'>True</span>, потому что первый операнд равен <span class='line-code'>True</span>, а на второй операнд интерпретатор даже не обратит внимание, потому что результат никак не изменится.</p>
+<p>Похожая ситуация и с <span class='line-code'>and</span>: если первый операнд равен <span class='line-code'>False</span>, то второй операнд проверяться не будет, так как он не изменит результат.</p>
+<h2 class='ls-title'>Оператор <span class='line-code'>not</span></h2>
+<p>В Python есть оператор отрицания <span class='line-code'>not</span>, который возвращает обратное логические значение. <span class='line-code'>False</span> он превращает в <span class='line-code'>True</span> и наоборот:</p>
+<div class='code'><pre><code class='language-python'>a = 0 > 100 # равно False
+
+if not(a): # (1)
+    print('Эта строка выполнится')</code></pre></div>
+<p>Условие на строке <span class='line-code'>(1)</span> выполнится, потому что оператор <span class='line-code'>not</span> вернет значение, обратное <span class='line-code'>a</span></p>

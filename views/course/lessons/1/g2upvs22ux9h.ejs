@@ -1,0 +1,52 @@
+<h2 class="ls-title first">Вывод данных пользователю</h2>
+<p>Функция <span class="line-code">print( )</span> используется для вывода данных в консоль. При этом она не меняет значения переменных и т.д, а просто показывает информацию пользователю. В круглых скобках передаются данные, которые нужно вывести:</p>
+<div class='code'><pre><code class="language-python">print("Hello World!")
+
+# если всё сделано правильно, программа выведет в консоли «Hello World!»</code></pre></div>
+<p>Для вывода числа или результата выражения, они аналогично передаются в круглых скобках. Обратите внимание, что передаем их без кавычек:</p>
+<div class='code'><pre><code class='language-python'>print(12345) # выведет 12345
+
+print((3+2)*2) # выведет 10</code></pre></div>
+
+<p>Чтобы вывести в консоль значение переменной, её название не нужно оборачивать в кавычки. Кавычки используются только для строк:</p>
+<div class='code'><pre><code class='language-python'>user = "John" # объявили переменную user со значением John
+
+print(user) # выведет «John»
+print("user") # выведет «user»</code></pre></div>
+<p>Не пугайтесь, если не знаете, что такое переменная, в ближайшее время мы изучим эту тему.</p>
+<br>
+<p>Если внутрь круглых скобок <span class="line-code">print()</span> ничего не передавать, выведется пустая строка. Так можно делать вертикальные отступы при выводе в консоль:</p>
+<div class='code'><pre><code class='language-python'>print("Mike", 10)
+print() # выведет пустую строку
+print("Tom", 16)
+print()
+print("Alice", 12)
+</code></pre></div>
+<p>Также можно вывести несколько значений, передав их в функцию <span class="line-code">print()</span> через запятую:</p>
+<div class='code'><pre><code class='language-python'>print("1", "+", "2", "=", 1 + 2) # выведет «1 + 2 = 3»</code></pre></div>
+<h2 class='ls-title'>Дополнительные параметры функции</h2>
+<p>Обратите внимание, выводимые значения разделяются одним пробелом. Это поведение можно изменить, передав в функцию именованный параметр <span class="line-code">sep</span>(от англ. <strong>sep</strong>arator - разделитель). Как мы уже поняли, по умолчанию он равен одному пробелу <span class="line-code">" "</span>, но можно присвоить ему любое строковое значение:</p>
+<div class='code'><pre><code class='language-python'>print("one", "two", "three", sep="-|-") # выведет «one-|-two-|-three»
+
+print("one", "two", "three", sep="") # параметр sep равен пустой строке, выведет «onetwothree»
+
+print("one", "two", "three", sep="\n") # «\n» - специальный символ переноса строки, такой вызов напечатает каждый элемент с новой строки</code></pre></div>
+
+<p>Заметим, что если вызвать функцию <span class="line-code">print()</span> несколько раз, каждый вывод будет напечатан с новой строки:</p>
+<div class='code'><pre><code class='language-python'>print("Ара")
+print("Какаду")
+print("Корелла")
+# Программа выведет: 
+# Ара
+# Какаду
+# Корелла    
+</code></pre></div>
+<p>Так происходит потому что у <span class="line-code">print()</span> есть ещё один полезный именованный параметр <span class="line-code">end</span>, который указывает на то, чем заканчивается вывод функции. По умолчанию параметр <span class="line-code">end</span> равен <span class="line-code">"\n"</span> - символу переноса строки. Но так же можно присвоить ему любое строковое значение:</p>
+<div class='code'><pre><code class='language-python'>print("apple", "orange", "pear", end = "\\")
+print("potato", "carrot")
+# выведет «apple orange pear\potato carrot»
+# если пришлось использовать символ «\» в строке, нужно указывать «\\», т.к один символ «\» обозначает начало специального символа(такого как «\n»)
+</code></pre></div>
+<br>
+<p>В этом уроке мы изучили работу функции <span class="line-code">print()</span> и варианты её использования!</p>
+

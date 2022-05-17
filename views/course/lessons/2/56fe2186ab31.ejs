@@ -1,0 +1,20 @@
+<h2 class='ls-title first'>Ветвление кода</h2>
+<p>До этого момента все рассматриваемые программы имели линейную структуру, то есть все инструкции точно выполнялись одна за другой. Зачастую не нужно, чтобы выполнялся весь код. Вместо этого можно сделать так, чтобы определенный блок кода запускался при выполнении определенного условия, а если условие не выполняется, запускался другой блок кода.</p>
+<p>Для этого в Python есть операторы <span class='line-code'>if</span>, <span class='line-code'>else</span>, <span class='line-code'>elif</span>. В этом уроке рассмотрим <span class='line-code'>if</span>, а <span class='line-code'>else</span> и <span class='line-code'>elif</span> изучим в следующем уроке.</p>
+<h2 class='ls-title'>Оператор <span class='line-code'>if</span></h2>
+<p>Синтаксис работы с оператором следующий:</p>
+<div class='code'><pre><code class='language-python'>if &#60;условие>: # (1)
+    &#60;код, который запустится при выполнении условия>  # (2)</code></pre></div>
+<p>В строке <span class='line-code'>(1)</span> после <span class='line-code'>if</span> передается условие - логическое выражение, которое возвращает <span class='line-code'>True</span>  или <span class='line-code'>False</span>. После условия ставится двоеточие и на следующей строке <strong>уже с отступом</strong> пишется код, который выполнится только если условие будет равно <span class='line-code'>True</span>, иначе этот код просто игнорируется:</p>
+<div class='code'><pre><code class='language-python'>if 1 > 0:
+    print("Этот текст выведется") # код выполнится и строка выведется  в консоль
+
+if False:
+    print("Этот текст не выведется") # эта строка кода не выполнится</code></pre></div>
+<p>Код, следующий за <span class='line-code'>if</span> у которого нет отступа, не относится к блоку <span class='line-code'>if</span>, поэтому он будет выполнен в любом случае:</p>
+<div class='code'><pre><code class='language-python'>number = int(input("Введите число меньше 10: "))
+
+if number >= 10: 
+    print("Вы ввели неправильное число") # запустится при выполнении условия
+
+print("Вы ввели", number) # выполнится в любом случае</code></pre></div>

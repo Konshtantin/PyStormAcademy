@@ -1,0 +1,34 @@
+<h2 class='ls-title first'>Оператор принадлежности</h2>
+<p>А есть ли в списке число <span class='line-code'>5</span>? А слово <span class='line-code'>'Hello'</span>? Оператор <span class='line-code'>in</span> проверяет, есть ли элемент с данным значением в коллекции. Если хоть один элемент имеет такое значение, оператор вернет <span class='line-code'>True</span>, если не нашлось ни одного элемента с таким значением, вернется <span class='line-code'>False</span>. Синтаксис работы с ним такой:</p>
+<div class='code'><pre><code class='language-python'>&#60;значение> in &#60;коллекция, в которой ищется элемент со значением></code></pre></div>
+<p>Определим, например, есть ли нужный элемент в списке:</p>
+<div class='code'><pre><code class='language-python'>num_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+print(2 in num_list) # True
+
+print('6' in num_list) # False, в списке есть число 6, но не строка '6'</code></pre></div>
+<h2 class='ls-title'>Не только со списками</h2>
+<p>Вы могли заметить, выше упоминалось, что оператор <span class='line-code'>in</span> работает с коллекциями. Но ведь не только списки являются коллекциями! Строки - тоже коллекции, и оператор <span class='line-code'>in</span> работает со строками, только значение, которое требуется найти должно быть исключительно строкой, иначе будет ошибка: </p>
+<div class='code'><pre><code class='language-python'>words = 'Green apple'
+print('g' in words) # False, регистр имеет значение
+
+print('e' in words) # True</code></pre></div>
+<p>Искать можно не только отдельные символы, но и подстроки, состоящие из нескольких символов:</p>
+<div class='code'><pre><code class='language-python'>words = 'Мне нравятся игры, самолеты, путешествия!'
+
+if 'игры' in words:
+    print("Вы действительно любите игры?")
+
+if 'путешествия' in words:
+    print('Пешком или на транспорте?')</code></pre></div>
+<h2 class='ls-title'>Оператор not in</h2>
+<p>Если нужно получить <span class='line-code'>True</span> при отсутствии данного элемента в коллекции, нужно использовать оператор <span class='line-code'>not in</span> вместо <span class='line-code'>in</span>:</p>
+<div class='code'><pre><code class='language-python'>colors = ['red', 'green', 'blue', 'black']
+
+if 'white' not in colors:
+    print('Белого цвета нет!')</code></pre></div>
+<p>Тот же результат можно было получить используя условие с <span class='line-code'>in</span> и оператором отрицания <span class='line-code'>not</span>:</p>
+<div class='code'><pre><code class='language-python'>colors = ['red', 'green', 'blue', 'black']
+
+if not ('white' in colors):
+    print('Белого цвета нет!')</code></pre></div>

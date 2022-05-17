@@ -1,0 +1,52 @@
+<p>Список - изменяемая коллекция, поэтому поддерживает операции добавления, изменения и удаления элементов.</p>
+<h2 class='ls-title first'>Добавление элементов</h2>
+<p>Метод <span class='line-code'>append(item)</span> добавляет переданное значение в конец списка:</p>
+<div class='code'><pre><code class='language-python'>trees = ['Яблоня', 'Дуб', 'Клён']
+
+trees.append('Тополь')
+
+print(trees) # ['Яблоня', 'Дуб', 'Клён', 'Тополь']
+</code></pre></div>
+<p>Метод <span class='line-code'>insert(index, item)</span> вставляет значение <span class='line-code'>item</span> на индекс <span class='line-code'>index</span>, сдвигая элементы вправо:</p>
+<div class='code'><pre><code class='language-python'>numbers = [1, 2, 3, 6]
+
+numbers.insert(3, [4, 5])
+
+print(numbers) # [1, 2, 3, [4, 5], 6]</code></pre></div>
+<p>Метод <span class='line-code'>extend(list)</span> добавляет в конец списка все значения из переданного списка <span class='line-code'>list</span>:</p>
+<div class='code'><pre><code class='language-python'>seasons = ['Зима', 'Весна']
+
+seasons.extend(['Лето', 'Осень'])
+print(seasons) # ['Зима', 'Весна', 'Лето', 'Осень']</code></pre></div>
+<h2 class='ls-title'>Удаление элементов</h2>
+<p>Метод <span class='line-code'>remove(item)</span> удаляет из списка первый элемент, имеющий значение <span class='line-code'>item</span>:</p>
+<div class='code'><pre><code class='language-python'>box = ['Карандаш', 'Калькулятор', 'Мусор', 'Брелок']
+
+box.remove('Мусор')
+
+print(box) # ['Карандаш', 'Калькулятор', 'Брелок']</code></pre></div>
+<p>Метод <span class='line-code'>pop(index)</span> удаляет элемент с индексом <span class='line-code'>index</span> и возвращает его значение. Если <span class='line-code'>index</span> не указан, удаляет последний элемент и возвращает его значение:</p>
+<div class='code'><pre><code class='language-python'>materials = ['Древесина', 'Металл', 'Гранит', 'Мрамор']
+
+granit = materials.pop(2) 
+print(granit) # Гранит
+
+print(materials) # ['Древесина', 'Металл', 'Мрамор']</code></pre></div>
+<h2 class='ls-title'>Изменение элементов</h2>
+<p>Чтобы изменить значение элемента списка, нужно присвоить новое значение по индексу старого:</p>
+<div class='code'><pre><code class='language-python'>phrase = ['Привет', 'мир', '!']
+
+phrase[1] = 'страна'
+
+print(phrase) # ['Привет', 'страна', '!']</code></pre></div>
+<p>Можно изменить несколько элементов используя срез:</p>
+<div class='code'><pre><code class='language-python'>numbers = [10, 20, 30, 40, 50, 60]
+
+numbers[3:] = [70, 80]
+
+print(numbers) # [10, 20, 30, 70, 80]</code></pre></div>
+<h2 class='ls-title'>Развернуть список</h2>
+<p>Один из способов развернуть список уже был изучен в теме "срезы списков":</p>
+<div class='code'><pre><code class='language-python'>numbers = [1, 2, 3, 4, 5]
+
+print(numbers[::-1]) </code></pre></div>

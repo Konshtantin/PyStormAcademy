@@ -1,0 +1,59 @@
+<h2 class='ls-title first'>Числа в Python</h2>
+<p>Python имеет встроенную поддержку трех типов чисел: целые числа(<span class='line-code'>int</span>), дробные числа или числа с «плавающей» точкой(<span class='line-code'>float</span>) и комплексные числа (<span class='line-code'>complex</span>). Разберем каждый тип чисел отдельно:</p>
+<h2 class='ls-title'>Целые числа(int)</h2> 
+<p>В Python любое число, состоящее из десятичных цифр без префикса, интерпретируется как целое число. Каждая из следующих строк выведет <span class='line-code'>&#60;class 'int'></span>, что означает принадлежность числа к классу(пока будем говорить просто «типу») <span class='line-code'>int</span>:</p>
+<div class='code'><pre><code class='language-python'>print(type(1001))
+print(type(0))
+print(type(-217))</code></pre></div>
+<p>Благодаря сложной реализации, в Python 3 в переменную типа <span class='line-code'>int</span> можно записать число неограниченной длины. Но представьте, нужно записать в переменную миллиард, самый очевидный способ:</p>
+<div class='code'><pre><code class='language-python'>num = 1000000000</code></pre></div>
+<p>Но в реальный жизни мы упускаем такой способ из-за риска ошибиться в колличестве нулей. Если с миллиардом сложно ошибиться, то есть числа больше. В Python 3 есть несолько способов удобно записать большое круглое число: 
+<ol class="code-list">
+    <li>Использовать специальный разделитель. Этот способ подобен тому, как в жизни мы записываем миллион как <span class='line-code'>1 000 000</span>, только вместо пробела - знак <span class='line-code'>_</span>:</li>
+    <div class='code'><pre><code class='language-python'>print(1_000_000) # выведет 1000000
+
+print(1_000_000_000) # выведет 1000000000
+
+print(1_2345_6789_1_0_1_112)
+    </code></pre></div>
+    <p class="code-list-p">Не обязательно разделять число по трем знакам, но иначе такой способ теряет смысл.</p>
+    <li>Использовать знак экспоненты <span class='line-code'>e</span>, который заменяет указанное колличество нулей:</li>
+    <div class='code'><pre><code class='language-python'>num = 1e9 # тот же миллиард
+
+print(9.7e6) # выведет 9700000.0
+        
+print(11.5e-1) # выведет 1.15</code></pre></div>
+    <p class="code-list-p">Такой способ записи всегда возвращает вещественное(дробное) число. Чтобы преобразовать его к типу <span class='line-code'>int</span>, нужно воспользоватья функцией <span class='line-code'>int()</span>, которая возвращает объект, переданный в круглые скобки, в целочисленном виде: </p>
+    <div class='code'><pre><code class='language-python'>print(int(9.7e6)) # выведет 9700000</code></pre></div>
+</ol>
+
+
+
+<p>Если переводить дробное число в целочисленное, то дробная часть просто отбрасывается: </p>
+<div class='code'><pre><code class='language-python'>print(int(1.619265)) # выведет 1
+
+print(int(-0.2391587)) # выведет 0(оно же -0)</code></pre></div>
+<h2 class='ls-title'>Дробные числа(float)</h2>
+<p>Дробным числом называют число, содержащие точку(десятичный разделитель) или знак экспоненты(<span class='line-code'>e</span>):</p>
+<div class='code'><pre><code class='language-python'>num = 12.5
+
+million = 1e6 
+
+print(num) # выведет 12.5
+
+print(type(million)) 
+# выведет &#60;class 'float'>, что показывает принадлежность к вещественным числам
+</code></pre></div>
+<p>Числа типа <span class='line-code'>float</span> - неточны из-за представления их в компьютере, но для простых вычислений(не банковская система) базовой точности хватит: </p>
+<div class='code'><pre><code class='language-python'>print(0.6 + 0.3 + 0.1) # выведет 0.9999999999999999</code></pre></div>
+<h2 class='ls-title'>Комплексные числа(complex)</h2>
+<p>Встроенная поддержка комплексных чисел выделяет Python среди остальных языков программирования.</p> 
+<p>Комплексные числа представляют собой пару значений <span class='line-code'>int</span> или <span class='line-code'>float</span>, и имеют вид <span class='line-code'>&#60;реальная часть> + &#60;мнимая часть>j</span>.</p>
+<div class='code'><pre><code class='language-python'>num = 1+3j
+
+print(type(num)) # выведет &#60;class 'complex'>, т.е это комплексное число</code></pre></div>
+<p>Отдельные части комплексного числа доступны через атрибуты <span class='line-code'>real</span> и <span class='line-code'>imag</span>:</p>
+<div class='code'><pre><code class='language-python'>num = 5.99 + 2j
+
+print("real: " + str(num.real)) # выведет «real: 5.99»
+print("imag: " + str(num.imag)) # выведет «imag: 2.0»</code></pre></div>

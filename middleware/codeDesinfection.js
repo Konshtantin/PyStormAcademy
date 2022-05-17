@@ -48,10 +48,10 @@ function desinfectCode(codeString) {
     return new Promise((resolve, reject) => {
         let code = cutStrings(codeString)
         const detectedModule = detectModules(code)
-        const detectedDanger = detectDangers(code)
         if(detectedModule) {
             resolve('Использование модулей запрещено в целях безопасности')
         }
+        const detectedDanger = detectDangers(code)
         if(detectedDanger) {
             resolve(`Использование функции "${detectedDanger}" запрещено в целях безопасности`)
         }

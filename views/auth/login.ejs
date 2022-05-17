@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyStorm</title>
+    <title>PyStorm | Вход в аккаунт</title>
+    <link rel="stylesheet" href="/stylesheets/partials/header.css">
     <link rel="stylesheet" href="/stylesheets/auth/login.css">
+    <link rel="stylesheet" href="/stylesheets/partials/footer.css">
 </head>
 <body>
     <%- include('../partials/header') %>
@@ -27,6 +29,7 @@
                 <div class="forgot">Забыли пароль? <a href="/auth/change">Сбросить пароль</a></div>
             </div>  
         </section>
+        <button class="log">Log</button>
     </main>
     <%- include('../partials/footer') %>
     <div class="loading"><img src="/images/light-loading.svg" alt=""></div>

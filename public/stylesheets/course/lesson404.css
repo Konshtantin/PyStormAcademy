@@ -1,0 +1,25 @@
+#main {
+    min-height: 90vh;
+    padding-top: 22vh;
+    font-family: 'Ubuntu', 'Arial', sans-serif;
+}
+.main__num {
+    font-size: 13rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, rgb(41, 67, 184), rgb(224, 39, 39) 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    left: 20vw;
+}
+.main__text {
+    font-size: 5rem;
+    font-weight: 600;
+    position: relative;
+    left: 35vw;
+    background: linear-gradient(45deg, rgb(41, 67, 184), rgb(224, 39, 39) 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

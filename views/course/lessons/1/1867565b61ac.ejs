@@ -1,0 +1,91 @@
+<h2 class='ls-title first'>Индексация строк</h2>
+<p>Доступ к определенному символу в строке можно получить по индексу. <strong>Индекс</strong> - адрес элемента в упорядоченной последовательности. Индексация во всех упорядоченных последовательностях в Python начинается с <span class='line-code'>0</span>, поэтому индекс последнего элемента последовательности равен <span class='line-code'>len(последовательность) - 1</span>: </p>
+<div class="seq">
+    <div class="word">
+        <div class="title">Элемент</div>
+        <div class="quote">"</div>
+        <div class="table-element">H</div>
+        <div class="table-element">E</div>
+        <div class="table-element">L</div>
+        <div class="table-element">L</div>
+        <div class="table-element">O</div>
+        <div class="table-element"> </div>
+        <div class="table-element">W</div>
+        <div class="table-element">O</div>
+        <div class="table-element">R</div>
+        <div class="table-element">L</div>
+        <div class="table-element br">D</div>
+        <div class="quote">"</div>
+    </div>
+    <div class="indexes">
+        <div class="title">Индекс</div>
+        <div class="table-element">0</div>
+        <div class="table-element">1</div>
+        <div class="table-element">2</div>
+        <div class="table-element">3</div>
+        <div class="table-element">4</div>
+        <div class="table-element">5</div>
+        <div class="table-element">6</div>
+        <div class="table-element">7</div>
+        <div class="table-element">8</div>
+        <div class="table-element">9</div>
+        <div class="table-element">10</div>
+    </div>
+</div>
+<p>Длина строки <span class='line-code'>HELLO WORLD</span> равна <span class='line-code'>11</span>, но индекс последнего элемента(<span class='line-code'>D</span>) равен <span class='line-code'>10</span>. Чтобы получить конкретный элемент, после последовательности в квадратных скобках указывается индекс этого элемента: </p>
+<div class='code'><pre><code class='language-python'>string = "sunflower"
+
+print(string[0]) # выведет «s»
+print(string[len(string) - 1]) # выведет «r» (последний элемент)
+
+print(string[len(string)]) 
+# ошибка IndexError, потому что элемента с таким индексом не существует
+</code></pre></div>
+<h2 class='ls-title'>Отрицательная индексация</h2>
+<p>Индексы последовательностей также могут быть указаны отрицательными числами, где индекс последнего элемента последовательности равен <span class='line-code'>-1</span>, а индекс первого равен <span class='line-code'>-len(последовательность)</span>: </p>
+<div class="seq">
+    <div class="word">
+        <div class="title">Элемент</div>
+        <div class="quote">"</div>
+        <div class="table-element">H</div>
+        <div class="table-element">E</div>
+        <div class="table-element">L</div>
+        <div class="table-element">L</div>
+        <div class="table-element">O</div>
+        <div class="table-element"> </div>
+        <div class="table-element">W</div>
+        <div class="table-element">O</div>
+        <div class="table-element">R</div>
+        <div class="table-element">L</div>
+        <div class="table-element br">D</div>
+        <div class="quote">"</div>
+    </div>
+    <div class="indexes">
+        <div class="title">Индекс</div>
+        <div class="table-element">-11</div>
+        <div class="table-element">-10</div>
+        <div class="table-element">-9</div>
+        <div class="table-element">-8</div>
+        <div class="table-element">-7</div>
+        <div class="table-element">-6</div>
+        <div class="table-element">-5</div>
+        <div class="table-element">-4</div>
+        <div class="table-element">-3</div>
+        <div class="table-element">-2</div>
+        <div class="table-element">-1</div>
+    </div>
+</div>
+<p>Получить элемент с помощью отрицательного индекса можно аналогичным способом: </p>
+<div class='code'><pre><code class='language-python'>string = "sunflower"
+
+print(string[-1]) # выведет «r», т.е последний элемент
+
+print(string[-len(string)]) # выведет «s», т.е первый элемент
+</code></pre></div>
+<h2 class='ls-title'>Строки неизменяемы</h2>
+<p>Строки относятся к «немутирующим»(неизменяемым) объектам, структуру которых нельзя изменить напрямую. Невозможно изменить какой нибудь символ в существующей строке или перевернуть строку: </p>
+<div class='code'><pre><code class='language-python'>string = "colibri"
+
+string[1] = "A" 
+# ошибка TypeError, потому что строки не поддерживают изменения
+</code></pre></div>

@@ -1,0 +1,81 @@
+<h2 class='ls-title first'>Переменные в Python</h2>
+<p>Обычно программам нужно работать с данными. Эти данные нужно где-то хранить, изменять. Для этого в языках программирования существуют переменные.</p>
+<p><strong>Переменная</strong> - это именованное хранилище данных.</p>
+<p>Чтобы создать переменную указываем имя переменной и присваиваем ей значение при помощи оператора присваивания <span class="line-code">=</span>:</p>
+<div class='code'><pre><code class='language-python'># имя_переменной = значение_переменной
+
+car = "Porsche"
+</code></pre></div>
+<p>Получить доступ к данным можно по имени переменной:</p>
+<div class='code'><pre><code class='language-python'>car = "Porsche" # объявляем переменную car
+    
+print(car) # выведет «Porsche»</code></pre></div>
+<p>Можно объявить несколько переменных в одной строке: </p>
+<div class='code'><pre><code class='language-python'>var_1, var_2, var_3 = "Hello", "cat", 999
+
+print(var_1, var_2, var_3, sep = ", ")
+# выведет «Hello, cat, 999»
+</code></pre></div>
+<p>Такой способ может показаться короче, но мы не рекомендуем его. Для лучшей читаемости объявляйте каждую переменную на новой строке:</p>
+
+<div class='code'><pre><code class='language-python'>var_1 = "Hello"
+var_2 = "cat"
+var_3 = 999
+
+print(var_1, var_2, var_3, sep = ", ")
+# то же самое, но код более читаемый
+</code></pre></div>
+<br>
+<p>Обратите внимание, что имена переменных регистрозависимы, т.е <span class="line-code">user</span> и <span class="line-code">UseR</span> - это разные переменные:</p>
+<div class='code'><pre><code class='language-python'>user = "Ivan"
+USER = "Alex"
+
+print(user) # выведет «Ivan»
+print(USER) # выведет «Alex»
+</code></pre></div>
+<br>
+<p>Чтобы изменить значение переменной, просто присваиваем идентификатору(имени переменной) новое значение: </p>
+<div class='code'><pre><code class='language-python'>count = 10
+
+count = count + 5
+print(count) # выведет 15
+
+count = 1000
+print(count) # выведет 1000
+</code></pre></div>
+<h2 class='ls-title'>Правила именования переменных</h2>
+<ol class="code-list">
+    <li>Имя переменной может содержать только буквы, цифры и знак подчеркивания <span class="line-code">_</span>.</li>
+    <div class='code'><pre><code class='language-python'>n!a7no$ = 10  # ошибка, т.к имя содержит специальные символы, кроме «_»</code></pre></div>
+    <li>Имя переменной не может начинаться с цифры.</li>
+    <div class='code'><pre><code class='language-python'>40years = "adult"  
+# ошибка, т.к первый символ в имени переменной - цифра</code></pre></div>
+    <li>В имени переменной не может быть пробелов.</li>
+    <div class='code'><pre><code class='language-python'>some variable = "some value"  # ошибка, т.к имя содержит пробелы</code></pre></div>
+    <li>Если вы хотите, чтобы имя переменной включало в себя более одного слова, используйте стиль camelCase или snake_case(в Python чаще используют snake_case).</li>
+    <div class='code'><pre><code class='language-python'>someVariable = 513 # стиль camelCase(каждое следующее слово с заглавной буквы)
+some_variable = 723 # стиль snake_case(каждое следующее слово через символ «_»)</code></pre></div>
+    <li>Именем переменной не может быть ключевое слово, которое зарезервировано самим Python.</li>
+    <div class='code'><pre><code class='language-python'>def = 10
+class = "10 A"
+if = False
+
+# ошибка, т.к в качестве имен использованы ключевые слова</code></pre></div>
+</ol>
+<p>Вот список ключевых слов Python. Так назвать переменную не получится:</p>
+<div class='code'><pre><code class='language-python'>False True None and with assert break class
+continue def del elif else except finally for
+from global if import in is lambda nonlocal
+not or pass raise return try while yield as</code></pre></div>
+<p>Их не нужно заучивать, по ходу обучения об основных ключевых словах вы и так узнаете. А ошибиться вам не позволит IDE, которая выделяет ключевые слова особым цветом.</p>
+<h2 class='ls-title'>Как назвать переменную</h2>
+<p>Название переменной должно иметь ясный и понятный смысл, говорить о том, какие данные в ней хранятся.</p>
+<p>Несколько хороших правил:</p>
+<ol class="code-list line-list">
+    <li>Используйте легко читаемые имена, такие как <span class="line-code">user_name</span> или <span class="line-code">shoppingCart</span></li>
+    <li>Избегайте использования аббревиатур или коротких имён, таких как <span class="line-code">a</span>, <span class="line-code">b</span>, <span class="line-code">c</span>, за исключением переменных в цикле <span class="line-code">for</span>(познакомимся с ним позже) или когда вы точно знаете, что так нужно.</li>
+    <li>Делайте имена максимально описательными и лаконичными. Примеры плохих имён: <span class="line-code">data</span> и <span class="line-code">value</span>. Такие имена ничего не говорят о данных, которые эти переменные хранят.</li>
+</ol>
+<h2 class='ls-title'>Не поленись сознать новую</h2>
+<p>Вместо повторного использования старых переменных в целях экономии памяти, размера кода, не поленитесь и создайте новую переменную, потому что иначе легко запутаться в том, что хранит переменная в данный момент.</p>
+<p>К тому же использование старых переменных не приведет к какому-либо выигрышу.</p>

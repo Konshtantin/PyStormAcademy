@@ -11,7 +11,7 @@
     editor.session.setMode("ace/mode/python");
 
     editor.setOptions({
-        fontSize: "1.2rem",
+        fontSize: "1.1rem",
         enableBasicAutocompletion: true,
         enableSnippets: true,
         enableLiveAutocompletion: true
@@ -20,29 +20,27 @@
         if(closeRun) {
             return
         }
-        if(ideConsole.value.length > 5000) {
+        if(ideConsole.value.length > 1000) {
             if(previousConsoleValue.includes('\r')) {
                 if(previousConsoleValue.split('\r\n').join('') == ideConsole.value.split('\n').join('')) {
                     ideConsole.value = ''
                 } else {
-                    ideConsole.value = 'Слишком много данных в консоли'
+                    ideConsole.value = 'Слишком много данных в командной строке! Невозможно выполнить код!'
                     return
                 }
             } else {
                 if(previousConsoleValue.split('\n').join('') == ideConsole.value.split('\n').join('')) {
                     ideConsole.value = ''
                 } else {
-                    ideConsole.value = 'Слишком много данных в консоли'
+                    ideConsole.value = 'Слишком много данных в командной строке! Невозможно выполнить код!'
                     return
                 }
             }
-            
-            
         }
-
+        // closeRun = true
         const code = editor.getValue()
         const args = ideConsole.value.split('\n').map(item => item.trim().toString()).filter(item => item !== '')
-        closeRun = true
+        ideConsole.value = ''
         fetch('/run', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -51,16 +49,16 @@
             .then(response => response.json())
             .then(data => {
                 closeRun = false
-                if(data.response.error) {
-                    ideConsole.value = data.response.error.errArray[1]
+                if(data.result.error) {
+                    ideConsole.value = data.result.error.string
                     return
                 }
-                if(data.response.derror) {
-                    ideConsole.value = data.response.derror
+                if(data.result.derror) {
+                    ideConsole.value = data.result.derror
                     return
                 }
-                previousConsoleValue = data.response
-                ideConsole.value = data.response
+                previousConsoleValue = data.result
+                ideConsole.value = data.result
             })
     })
 })()

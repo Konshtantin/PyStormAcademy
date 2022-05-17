@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const authController = require('../controllers/authController')
 const {body} = require('express-validator')
+const {requireAuth} = require('../middleware/authMiddleware')
 
 const router = Router()
 
@@ -17,16 +18,16 @@ router.post('/sign-up',
         }
         return true
     }).withMessage('Использование нецензурных слов недопустимо'),
-    body('surname').isLength({min: 3, max: 24}).withMessage('Фамилия пользователя должна быть длиной от 3 до 24 символов').custom(value => new RegExp(/^[a-zA-Zа-яА-ЯёЁ-]+$/).test(value)).withMessage('Фамилия пользователя может содержать только русские, латинские буквы и тире').custom(value => {
-        const lvalue = value.toLowerCase()
-        const noWorlds = ['бля', 'eб', 'ёб', 'ганд', 'пид', 'пизд', 'хуй', 'хуе', 'хуи', 'сук', 'fuck', 'shit', 'eb', 'blya', 'gand', 'pid', 'pizd']
-        for(const word of noWorlds) {
-            if(lvalue.includes(word)) {
-                return false
-            }
-        }
-        return true
-    }).withMessage('Использование нецензурных слов недопустимо'),
+    // body('surname').isLength({min: 3, max: 24}).withMessage('Фамилия пользователя должна быть длиной от 3 до 24 символов').custom(value => new RegExp(/^[a-zA-Zа-яА-ЯёЁ-]+$/).test(value)).withMessage('Фамилия пользователя может содержать только русские, латинские буквы и тире').custom(value => {
+    //     const lvalue = value.toLowerCase()
+    //     const noWorlds = ['бля', 'eб', 'ёб', 'ганд', 'пид', 'пизд', 'хуй', 'хуе', 'хуи', 'сук', 'fuck', 'shit', 'eb', 'blya', 'gand', 'pid', 'pizd']
+    //     for(const word of noWorlds) {
+    //         if(lvalue.includes(word)) {
+    //             return false
+    //         }
+    //     }
+    //     return true
+    // }).withMessage('Использование нецензурных слов недопустимо'),
     body('email').trim().isEmail().withMessage('Электронная почта не корректна'),
     body('password').isLength({min: 8, max: 36}).withMessage('Пароль должен быть длиной от 8 до 36 символов').custom(value => new RegExp(/^[\wа-яА-ЯёЁ\Q#$%|&\E]+$/).test(value)).withMessage('Пароль может содержать только русские или латинские буквы, цифры, специальные символы #, $, %, &, |'),
     body('repeat').custom((value, {req}) => value === req.body.password).withMessage('Пароли не совпадают'),
@@ -58,6 +59,8 @@ authController.change_password_post)
 router.post('/change', 
     body('email').isEmail().withMessage('Электронная почта не корректна'),
 authController.change_password_post_email)
+
+router.get('/logout', requireAuth, authController.logout_get)
 
 
 

@@ -1,0 +1,42 @@
+<h2 class='ls-title first'>Логический тип данных</h2>
+<p>Тип данных <span class='line-code'>bool</span> - логический тип данных в Python. Значение типа <span class='line-code'>bool</span> можно получить сравнивая между собой значения с помощью операторов сравнения.</p> 
+<p>Логический тип данных имеет только два значения: <span class='line-code'>True</span>(с англ. правда) и <span class='line-code'>False</span>(с англ. ложь). Процесс создания переменной содержащей логическое значение такой же, как с другими типами данных:</p>
+<div class='code'><pre><code class='language-python'>isPython = True
+
+print(type(isPython)) # выведет &#60;class 'bool'>
+
+print(type(1 > 2)) # тоже выведет &#60;class 'bool'></code></pre></div>
+<h2 class='ls-title'>Надстройка над <span class='line-code'>int</span></h2>
+<p>Тип данных <span class='line-code'>bool</span> является подтипом типа <span class='line-code'>int</span>, поэтому значения <span class='line-code'>True</span>, <span class='line-code'>False</span> ведут себя как числа <span class='line-code'>1</span> и <span class='line-code'>0</span> соответственно:</p>
+<div class='code'><pre><code class='language-python'>print(True == 1) # выведет True
+
+print(int(True)) # выведет 1
+
+print(int(False)) # выведет 0
+
+print(True + 1) # выведет 2, лучше так не делать чтобы повысить читаемость кода</code></pre></div>
+<h2 class='ls-title'>Преобразование других типов в <span class='line-code'>bool</span></h2>
+<p>Чтобы перевести любое значение в логическое, используется функция <span class='line-code'>bool()</span>. Есть определенные правила, когда результатом будет <span class='line-code'>True</span>, а когда <span class='line-code'>False</span>.</p>
+<h3 class='ls-mini-title'>Функция вернет <span class='line-code'>True</span></h3>
+<ol class="code-list">
+    <li>Число не равное <span class='line-code'>0</span></li>
+    <div class='code'><pre><code class='language-python'>bool(-8) # вернет True</code></pre></div>
+    <li>Непустая строка, состоящая даже из пробелов</li>
+    <div class='code'><pre><code class='language-python'>bool("    ") # вернет True</code></pre></div>
+    <li>Непустой список/кортеж/словарь</li>
+    <div class='code'><pre><code class='language-python'>bool([1, 2]) # вернет True</code></pre></div>
+    <li>Любая функция</li>
+    <div class='code'><pre><code class='language-python'>def Foo():
+    return "test"
+bool(Foo) # вернет True
+    </code></pre></div>
+</ol>
+<h3 class='ls-mini-title'>Функция вернет <span class='line-code'>False</span></h3>
+<ol class="code-list">
+    <li>Пустая строка</li>
+    <li>Число <span class='line-code'>0</span></li>
+    <li>Пустой список/кортеж/словарь</li>
+    <li>Тип данных <span class='line-code'>None</span></li>
+</ol>
+<p>Тип данных <span class='line-code'>None</span> буквально означает «ничего»:</p>
+<div class='code'><pre><code class='language-python'>print(bool(None)) # выведет False</code></pre></div>

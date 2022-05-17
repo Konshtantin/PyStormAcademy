@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyStorm | <%= task.title %></title>
+    <link rel="stylesheet" href="/stylesheets/partials/miniHeader.css">
+    <link rel="stylesheet" href="/stylesheets/course/task.css">
+    <link rel="stylesheet" href="/stylesheets/partials/footer.css">
+    <!-- <link rel="stylesheet" href="/highlight/styles/github.min.css"> -->
+    <link rel="stylesheet" href="/highlight/styles/monokai-sublime.min.css">
+</head>
+<body>
+    <%- include('../partials/miniHeader') %>
+    <main id="main">
+        <section class="theory">
+            <div class="back-button"><a href="/lesson/<%= lesson.id %>"><img src="/images/lesson/back-arrow.svg" alt=""> Вернуться к уроку</a></div>
+            <div class="task-content"><%- include(`./tasks/${task.module_number}/${task.filename}`) %></div>
+        </section>
+        <section class="activity">
+            <div class="editor-field">
+                <div id="editor"></div>
+            </div>
+            <div class="console-field">
+                <textarea class="ide-console" id="ide-console"></textarea>
+            </div>
+            
+            <div class="run-code"><img src="/images/lesson/run-code.svg" alt="run_code" draggable="false"></div>
+            <div class="check-code"><img src="/images/task/eye.svg" alt="check_code" draggable="false"></div>
+        </section>
+        <div class="notification">
+            <div class="information">Урок завершен!</div>
+            <div class="close-notification">
+                <img src="/images/task/cross.svg" alt="">
+            </div>
+        </div>
+    </main>
+    <script src="/highlight/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/courses/highlight-init.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/snippets/python.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/courses/task-editor-script.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/profile-script.js"></script>
+</body>
+</html>

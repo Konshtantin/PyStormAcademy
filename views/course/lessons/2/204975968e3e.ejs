@@ -1,0 +1,53 @@
+<h2 class='ls-title first'>Оператор <span class='line-code'>else</span></h2> 
+<p>Оператор <span class='line-code'>if</span> выполняет код если условие истинно и ничего не выполняет, если ложно. Но часто нужно выполнить какой-то код, если условие в <span class='line-code'>if</span> ложно. Для этого в Python есть оператор <span class='line-code'>else</span>. Он выполняет код <strong>только</strong> если условие ложно. Синтаксис работы с <span class='line-code'>if-else</span> следующий: </p>
+<div class='code'><pre><code class='language-python'>if &#60;условие>: # (1)
+    &#60;код, который выполнится если условие равно True> # (2)
+else:
+    &#60;код, который выполнится если условие равно False> # (3)</code></pre></div>
+<p>На строке <span class='line-code'>(1)</span> проверяется условие и если оно возвращает <span class='line-code'>True</span>, выполняется код на строке <span class='line-code'>(2)</span>, если возвращает <span class='line-code'>False</span>, выполняется код на строке <span class='line-code'>3</span>. Оператор <span class='line-code'>else</span> привязан к конкретному <span class='line-code'>if</span> и отдельно использоваться не может. </p>
+<p>Например, программа запрашивает пароль и отвечает в зависимости от того, правильно ли он введен:</p>
+<div class='code'><pre><code class='language-python'>password = '12345678'
+user_input = input("Введите пароль: ")
+
+if user_input == password:
+    print("Пароль верный")
+    print("Вы вошли в аккаунт")
+else:
+    print("Пароль неверный")</code></pre></div>
+<h2 class='ls-title'>Вложенные операторы <span class='line-code'>if-else</span></h2>
+<p>Условные операторы <span class='line-code'>if</span> и <span class='line-code'>else</span> можно использовать внутри других конструкций <span class='line-code'>if-else</span>:</p>
+<div class='code'><pre><code class='language-python'>num = 4
+
+if num == 2:
+    print("Число равно 2")
+else:
+    if num == 4:
+        print("Число равно 4") # выполнится эта строка
+    else:
+        print("Число не равно 2 и 4")</code></pre></div>
+<p>Такую запись можно сократить не потеряв функционал кода с помощью ещё одного оператора: <span class='line-code'>elif</span>(<strong>el</strong>se + <strong>if</strong>).</p>
+<h2 class='ls-title'>Оператор <span class='line-code'>elif</span></h2>
+<p>Оператор <span class='line-code'>elif</span> используется после <span class='line-code'>if</span> и срабатывает если условие в <span class='line-code'>if</span> не выполняется. Так же делает и <span class='line-code'>else</span>, тогда в чем разница? Если интерпретатор доходит до <span class='line-code'>else</span>, блок кода внутри него точно сработает, а если на пути <span class='line-code'>elif</span>, то чтобы он сработал, должно выполниться ещё одно условие, которое передается после <span class='line-code'>elif</span> так же, как после <span class='line-code'>if</span>. Полная схема работы операторов <span class='line-code'>if</span>, <span class='line-code'>elif</span> и <span class='line-code'>else</span>:</p>
+<div class='code'><pre><code class='language-python'>if &#60;условие 1>:
+    &#60;код, который выполнится если условие 1 равно True>
+elif &#60;условие 2>: 
+    &#60;код, который выполнится если условие 2 равно True, а условие 1 - False>
+else:
+    &#60;код, который выполнится если все условия выше равны False></code></pre></div>
+<p>При выполнении любого из условий, блок кода соответствующего оператора выполнится и интерпретатор выйдет из текущей ветки <span class='line-code'>if-elif-else</span> и продолжит выполнение кода, который идет после неё:</p>
+<div class='code'><pre><code class='language-python'>password = 'qwerty12'
+
+if password == '12345678':
+    print("Ваш пароль взломан: 12345678")
+
+elif password == 'qwerty12': # (1)
+    print("Ваш пароль взломан: qwerty12") # (2)
+
+elif password == '88888888':
+    print("Ваш пароль взломан: 88888888")
+
+else:
+    print("Ваш пароль очень сложный(нет)")
+
+print("Эта строка никак не относится к if, elif, else выше") # (3)</code></pre></div>
+<p>Условие на строке <span class='line-code'>(1)</span> выполнится, запустится код на строке <span class='line-code'>(2)</span> и исполнение сразу перейдет к строке <span class='line-code'>(3)</span>, а операторы <span class='line-code'>elif</span> и <span class='line-code'>else</span> ниже <span class='line-code'>(2)</span> интерпретатор просто пропустит.</p>

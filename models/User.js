@@ -6,8 +6,7 @@ const UserSchema = new Schema({
         required: true
     },
     surname: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
@@ -44,10 +43,10 @@ const UserSchema = new Schema({
             required: true
         }
     }],
-    complited_themes: [{
-        theme: {
+    complited_lessons: [{
+        lesson: {
             type: Schema.ObjectId,
-            ref: 'Theme',
+            ref: 'Lesson',
             required: true
         },
         completion_date: {
@@ -73,6 +72,10 @@ const UserSchema = new Schema({
     last_theme: {
         type: Schema.ObjectId,
         ref: 'Theme'
+    },
+    last_task: {
+        type: Schema.ObjectId,
+        ref: 'Task'
     }
 })
 

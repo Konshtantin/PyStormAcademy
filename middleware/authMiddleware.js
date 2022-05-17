@@ -9,58 +9,25 @@ function createSESSToken(id) {
 // function createCONFToken(id) {
 //     return jwt.sign({id}, process.env.CONFIRM_KEY, {expiresIn: '30d'})
 // }
-// function createNLToken(id) {
-//     return jwt.sign({id}, process.env.NOTLOGIN_KEY, {expiresIn: '30d'})
-// }
 
 function requireAuth(req, res, next) {
-    if(req.body.checked) {
+    console.time('requireAuth')
+    if(req.body.SESS_ID_OK) {
+        console.timeEnd('requireAuth')
         next()
         return
-    }
-
-    const token = req.cookies.SESS_ID
-
-    if(token) {
-        jwt.verify(token, process.env.SESSION_KEY, (err, decodedToken) => {
-            if(err) {
-                res.clearCookie('SESS_ID')
-                res.redirect('/auth/login')
-                return
-            }
-            next()
-        })
     } else {
+        console.timeEnd('requireAuth')
         res.redirect('/auth/login')
     }
 }
 
-function checkUser(req, res, next) {
-    const token = req.cookies.SESS_ID
-
-    if(token) {
-        jwt.verify(token, process.env.SESSION_KEY, (err, decodedToken) => {
-            if(err) {
-                req.body.user = null
-                next()
-            } else {
-                User.findById(decodedToken.id)
-                    .then(user => {
-                        req.body.user = user
-                        next()
-                    })
-            }
-        })
-    } else {
-        req.body.user = null
-        next()
-    }
-}
-
 function checkConfirm(req, res, next) {
+    console.time('checkConfirm')
     const token = req.cookies.CONF_ID
 
     if(!token) {
+        console.timeEnd('checkConfirm')
         next()
         return
     }
@@ -69,6 +36,7 @@ function checkConfirm(req, res, next) {
         if(err) {
             res.clearCookie('CONF_ID')
             res.redirect('/auth/login')
+            console.timeEnd('checkConfirm')
             return
         }
         const user = await User.findById(decodedToken.id)
@@ -76,40 +44,58 @@ function checkConfirm(req, res, next) {
             res.clearCookie('CONF_ID')
             const token = createSESSToken(user._id)
             res.cookie('SESS_ID', token, {httpOnly: true, maxAge: 1000*60*60*24*30})
-            req.body.checked = true
+            req.body.SESS_ID_OK = true
+			res.locals.user = user
+            console.timeEnd('checkConfirm')
             next()
         } else {
+            console.timeEnd('checkConfirm')
             next()
         }
     })
 }
 
-function checkNotLogin(req, res, next) {
-    const token = req.cookies.NL_ID
-
-    if(!token) {
+function check_SESS_ID(req, res, next) {
+    console.time('check_SESS_ID')
+	if(req.body.SESS_ID_OK) {
         next()
         return
     }
 
-    jwt.verify(token, process.env.NOTLOGIN_KEY, async (err, decodedToken) => {
-        if(err) {
-            res.clearCookie('NL_ID')
-            res.redirect('/auth/login')
-            return
-        }
-        if(req.cookies.SESS_ID || req.body.checked) {
-            res.clearCookie('NL_ID')
-            next()
-            return
-        }
-        next()
-    })
-}
+    const token = req.cookies.SESS_ID
 
+    if(!token){
+        console.timeEnd('check_SESS_ID')
+        res.locals.user = null
+        next()
+        return
+    }
+    console.time('check_SESS_ID verifying')
+    jwt.verify(token, process.env.SESSION_KEY, async (err, decodedToken) => {
+        console.timeEnd('check_SESS_ID verifying')
+        if(err) {
+            res.clearCookie('SESS_ID')
+            res.redirect('/auth/login')
+            console.timeEnd('check_SESS_ID')
+            return
+        }
+        console.time('check_SESS_ID getting user')
+        const user = await User.findById(decodedToken.id)
+        console.timeEnd('check_SESS_ID getting user')
+        if(!user){
+            res.clearCookie('SESS_ID')
+            res.redirect('/auth/login')
+            console.timeEnd('check_SESS_ID')
+        } else {
+            req.body.SESS_ID_OK = true
+            res.locals.user = user
+            console.timeEnd('check_SESS_ID')
+            next()
+        }
+    }) 
+}
 module.exports = {
     requireAuth,
-    checkUser,
     checkConfirm,
-    checkNotLogin
+    check_SESS_ID
 }

@@ -5,7 +5,7 @@ const EventEmitter = require('events');
 
 const pidEmitter = new EventEmitter()
 
-pidEmitter.setMaxListeners(200)
+pidEmitter.setMaxListeners(100000)
 
 
 const cpidList = []
@@ -33,7 +33,7 @@ function createFolder(id, source) {
 
 function createPFile(id, codeText, source) {
     return new Promise((resolve, reject) => {
-        fs.writeFile(`${source}/CodeZone/${id}/${id}.py`, codeText, 'utf8', err => {
+        fs.writeFile(`${source}/CodeZone/${id}/${id}.py`, codeText, 'utf8', (err) => {
             if(err) throw err
             resolve()
         })
