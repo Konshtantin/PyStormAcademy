@@ -31,7 +31,7 @@ const HTTPSPORT = process.env.HTTPSPORT || 443
 // enable https server 
 const httpsServer = https.createServer({
     cert: fs.readFileSync(path.join(__dirname, 'private', 'cert.pem'), 'utf-8'),
-    key: fs.readFileSync(path.join(__dirname, 'private', 'private.pem'), 'utf-8'),
+    key: fs.readFileSync(path.join(__dirname, 'private', 'privkey.pem'), 'utf-8'),
     ca: fs.readFileSync(path.join(__dirname, 'private', 'chain.pem'), 'utf-8')
 }, app)
 
