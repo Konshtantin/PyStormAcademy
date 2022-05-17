@@ -12,7 +12,7 @@ const transporters = {
         host: "smtp.gmail.com",
         auth: {
             user: 'pystorm.academy@gmail.com',
-            pass: '<put_secret_key_here>'
+            pass: 'bembdycqaaazmcoc'
         },
         secure: true
     }),
