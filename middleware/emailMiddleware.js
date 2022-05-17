@@ -59,6 +59,7 @@ function sendConfirm(email, confirmLink) {
                             transporters.transporter3.sendMail(mailData, (err, info) => {
                                 if(err) {
                                     resolve('Error')
+                                    console.log(err)
                                 } else {
                                     resolve(3)
                                 }
@@ -99,6 +100,7 @@ function sendChange(email, name, changeLink) {
                             transporters.transporter3.sendMail(mailData, (err, info) => {
                                 if(err) {
                                     resolve('Error')
+                                    console.log(err)
                                 } else {
                                     resolve(3)
                                 }
