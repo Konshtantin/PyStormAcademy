@@ -26,8 +26,6 @@ ENV SESSION_KEY <put_secret_key_here>
 
 ENV CONFIRM_KEY <put_secret_key_here>
 
-ENV NOTLOGIN_KEY <put_secret_key_here>
-
 ENV CHANGE_KEY <put_secret_key_here>
 
 CMD [ "node", "app.js" ]

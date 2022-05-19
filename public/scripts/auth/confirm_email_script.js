@@ -3,10 +3,6 @@
     const resend = document.querySelector('.resend')
     let resendTime = document.querySelector('.resend-time')
     const loading = document.querySelector('.loading')
-    const log = document.querySelector('.log')
-    log.onclick = () => {
-        loading.classList.toggle('active')
-    }
     let close = false
     function timerController(time) {
         let timer = `${(time-(time%60))/60}:${time%60}`

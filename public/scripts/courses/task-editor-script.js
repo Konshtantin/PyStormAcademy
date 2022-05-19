@@ -95,6 +95,7 @@
         if(closeRun) {
             return
         }
+        
         if(ideConsole.value.length > 1000) {
             if(previousConsoleValue.includes('\r')) {
                 if(previousConsoleValue.split('\r\n').join('') == ideConsole.value.split('\n').join('')) {
@@ -112,10 +113,10 @@
                 }
             }
         }
+        closeRun = true
         const code = editor.getValue()
         const args = ideConsole.value.split('\n').map(item => item.trim()).filter(item => item !== '')
         ideConsole.value = ''
-
         fetch('/run', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -140,7 +141,6 @@
         if(closeCheck) {
             return
         }
-        
         if(ideConsole.value.length > 1000) {
             if(previousConsoleValue.includes('\r')) {
                 if(previousConsoleValue.split('\r\n').join('') == ideConsole.value.split('\n').join('')) {
@@ -158,6 +158,7 @@
                 }
             }
         }
+
         closeCheck = true
         const code = editor.getValue()
         const args = ideConsole.value.split('\n').map(item => item.trim()).filter(item => item !== '')

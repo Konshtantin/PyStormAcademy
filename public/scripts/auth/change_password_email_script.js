@@ -2,10 +2,6 @@
     const changeForm = document.querySelector('#changeform')
     const emailError = document.querySelector('.email-error')
     const loading = document.querySelector('.loading')
-    const log = document.querySelector('.log')
-    log.onclick = () => {
-        loading.classList.toggle('active')
-    }
     let close = false
     changeForm.addEventListener('submit', (event) => {
         event.preventDefault()
